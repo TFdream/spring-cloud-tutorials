@@ -1,0 +1,18 @@
+# 服务端口号
+server:
+  port: 8080
+
+# 服务名称
+spring:
+  application:
+    name: spring-cloud-consul-provider
+  cloud:
+    consul:
+      host: http://localhost
+      port: 80
+      discovery:
+        service-name: ${spring.application.name}
+        instanceId: ${spring.application.name}-${random.value}
+        prefer-ip-address: true
+        heartbeat:
+          enabled: true

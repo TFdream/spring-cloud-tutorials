@@ -1,0 +1,16 @@
+# 服务端口号
+server:
+  port: 8081
+
+# 服务名称
+spring:
+  application:
+    name: spring-cloud-consul-consumer
+  cloud:
+    consul:
+      host: http://localhost
+      port: 80
+      discovery:
+        register: false
+        heartbeat:
+          enabled: true
