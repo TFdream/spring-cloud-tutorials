@@ -25,6 +25,7 @@
 
     <modules>
         <module>spring-cloud-consul-discovery</module>
+        <module>spring-cloud-eureka-discovery</module>
         <module>spring-cloud-nacos-discovery</module>
     </modules>
 

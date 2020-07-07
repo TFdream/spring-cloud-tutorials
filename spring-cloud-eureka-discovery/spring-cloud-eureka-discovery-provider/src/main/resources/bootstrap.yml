@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    inetutils: ## 网卡设置
+      ignored-interfaces:  ## 忽略的网卡
+        - docker0
+        - veth.*
+        - VM.*
+      preferred-networks:  ## 优先的网段
+        - 192.168
+        - 172.27
