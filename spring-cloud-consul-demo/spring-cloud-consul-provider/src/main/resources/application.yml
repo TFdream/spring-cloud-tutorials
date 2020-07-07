@@ -8,11 +8,11 @@ spring:
     name: spring-cloud-consul-provider
   cloud:
     consul:
-      host: http://localhost
+      host: http://localhost/
       port: 80
       discovery:
         service-name: ${spring.application.name}
-        instanceId: ${spring.application.name}-${random.value}
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
         prefer-ip-address: true
         heartbeat:
           enabled: true

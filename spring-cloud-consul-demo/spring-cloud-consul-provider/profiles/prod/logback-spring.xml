@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOG_PATH" value="/data/logs/${prodName}"/>
+    <property name="LOG_FILE_NAME" value="${prodName}"/>
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n"/>
+
+    <springProperty scope="context" name="prodName" source="spring.application.name" defaultValue="spring-cloud-consul-consumer"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${LOG_FILE_NAME}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>500MB</maxFileSize>
+            <maxHistory>7</maxHistory>
+            <totalSizeCap>4GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name ="asyncToFile" class= "ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold >0</discardingThreshold>
+        <queueSize>256</queueSize>
+        <appender-ref ref ="FILE"/>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="asyncToFile"/>
+    </root>
+
+</configuration>

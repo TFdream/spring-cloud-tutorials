@@ -1,5 +1,6 @@
-package io.dreamstudio.springcloud.eureka.web.controller;
+package io.dreamstudio.springcloud.consul.consumer.web.controller;
 
+import io.dreamstudio.springcloud.consul.consumer.constant.Constant;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -15,11 +16,10 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/test")
-public class TestController {
-    private final String serviceId = "spring-cloud-consul-provider";
+public class CallController {
 
     @Resource
-    private LoadBalancerClient loadBalancer;
+    private LoadBalancerClient loadBalancerClient;
     @Resource
     private DiscoveryClient discoveryClient;
 
@@ -28,7 +28,7 @@ public class TestController {
      */
     @RequestMapping("/services")
     public List<ServiceInstance> services() {
-        return discoveryClient.getInstances(serviceId);
+        return discoveryClient.getInstances(Constant.PROVIDER_SERVICE_ID);
     }
 
     /**
@@ -36,7 +36,7 @@ public class TestController {
      */
     @RequestMapping("/discover")
     public Object discover() {
-        return loadBalancer.choose(serviceId).getUri().toString();
+        return loadBalancerClient.choose(Constant.PROVIDER_SERVICE_ID).getUri().toString();
     }
 
     /**
@@ -45,7 +45,7 @@ public class TestController {
      */
     @RequestMapping("/call")
     public String call() {
-        ServiceInstance serviceInstance = loadBalancer.choose("service-producer");
+        ServiceInstance serviceInstance = loadBalancerClient.choose(Constant.PROVIDER_SERVICE_ID);
         System.out.println("服务地址：" + serviceInstance.getUri());
         System.out.println("服务名称：" + serviceInstance.getServiceId());
 

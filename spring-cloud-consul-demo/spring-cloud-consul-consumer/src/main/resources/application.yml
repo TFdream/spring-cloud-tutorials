@@ -8,9 +8,10 @@ spring:
     name: spring-cloud-consul-consumer
   cloud:
     consul:
-      host: http://localhost
+      host: http://localhost/
       port: 80
       discovery:
-        register: false
-        heartbeat:
-          enabled: true
+        health-check-interval: 10s
+        health-check-timeout: 5s
+        health-check-critical-timeout: 30s
+        query-passing: true

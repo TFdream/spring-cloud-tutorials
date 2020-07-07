@@ -1,4 +1,4 @@
-package io.dreamstudio.springcloud.eureka;
+package io.dreamstudio.springcloud.consul.consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

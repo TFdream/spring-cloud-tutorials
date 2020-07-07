@@ -1,4 +1,4 @@
-package io.dreamstudio.springcloud.eureka.web.controller;
+package io.dreamstudio.springcloud.consul.provider.web.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
