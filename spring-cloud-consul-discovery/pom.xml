@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-cloud-consul-demo</artifactId>
+    <artifactId>spring-cloud-consul-discovery</artifactId>
     <packaging>pom</packaging>
 
     <name>${project.artifactId}</name>
@@ -21,8 +21,8 @@
     </properties>
 
     <modules>
-        <module>spring-cloud-consul-provider</module>
-        <module>spring-cloud-consul-consumer</module>
+        <module>spring-cloud-consul-discovery-provider</module>
+        <module>spring-cloud-consul-discovery-consumer</module>
     </modules>
 
     <dependencies>
