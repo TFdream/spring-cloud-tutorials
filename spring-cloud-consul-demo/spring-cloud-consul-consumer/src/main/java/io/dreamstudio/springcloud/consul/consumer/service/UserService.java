@@ -1,6 +1,7 @@
 package io.dreamstudio.springcloud.consul.consumer.service;
 
 import io.dreamstudio.springcloud.consul.consumer.constant.Constant;
+import io.dreamstudio.springcloud.consul.consumer.feign.ServerFeignApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.ServiceInstance;
@@ -26,6 +27,19 @@ public class UserService {
 
     @Resource
     private RestTemplate defaultRestTemplate;
+
+    @Resource
+    private ServerFeignApi serverFeignApi;
+
+    /**
+     * 方式三：使用OpenFeign
+     * @return
+     */
+    public String getUserList3() {
+        String result = serverFeignApi.getUsers();
+        LOG.info("方式三 返回结果:{}", result);
+        return result;
+    }
 
     /**
      * 方式二：SpringCloud中为我们提供了@LoadBalanced注解，只要将该注解添加到RestTemplate中的获取的地方就可以了

@@ -18,12 +18,17 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/call1")
-    public String testCallA() {
+    public String testCallLoadBalancerClient() {
         return userService.getUserList1();
     }
 
     @GetMapping("/call2")
-    public String testCallB() {
+    public String testCallLoadBalanced() {
         return userService.getUserList2();
+    }
+
+    @GetMapping("/call3")
+    public String testCallFeign() {
+        return userService.getUserList3();
     }
 }

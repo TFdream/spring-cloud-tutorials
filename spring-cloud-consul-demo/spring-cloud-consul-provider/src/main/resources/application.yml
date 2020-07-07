@@ -8,7 +8,7 @@ spring:
     name: spring-cloud-consul-provider
   cloud:
     consul:
-      host: http://localhost/
+      host: http://localhost
       port: 80
       discovery:
         service-name: ${spring.application.name}
