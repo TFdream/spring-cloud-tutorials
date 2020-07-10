@@ -8,8 +8,15 @@ spring:
     name: spring-cloud-eureka-discovery-consumer
 
 eureka:
+  instance:
+    app-group-name: group_1
+    prefer-ip-address: true
+    metadata-map:
+      zone: YOUR-NAME
+
   client:
     register-with-eureka: true # 注册到 Eureka-Server，默认为 true
     fetch-registry: true # 从 Eureka-Server 获取注册表，默认为 true
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka/ # Eureka-Server 地址
+    prefer-same-zone-eureka: true
