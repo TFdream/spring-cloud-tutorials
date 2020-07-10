@@ -1,0 +1,19 @@
+# 服务端口号
+server:
+  port: 8080
+
+# 服务名称
+spring:
+  application:
+    name: netflix-ribbon-02-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 # Nacos 服务器地址
+        metadata:
+          gray-label: gray01
+
+# 配置负载均衡
+netflix-ribbon-02-consumer:
+  ribbon:
+    NFLoadBalancerRuleClassName: io.dreamstudio.springcloud.netflix.ribbon.consumer.rule.GrayReleaseRule

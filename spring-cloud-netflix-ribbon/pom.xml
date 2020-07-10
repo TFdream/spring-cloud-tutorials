@@ -23,6 +23,7 @@
     <modules>
         <module>spring-cloud-netflix-ribbon-provider</module>
         <module>spring-cloud-netflix-ribbon-consumer</module>
+        <module>spring-cloud-netflix-ribbon-02-consumer</module>
     </modules>
 
     <dependencies>
