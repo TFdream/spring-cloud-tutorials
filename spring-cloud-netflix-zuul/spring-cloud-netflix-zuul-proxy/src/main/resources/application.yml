@@ -24,6 +24,9 @@ zuul:
       path: /user-service/**
     product-service:
       path: /product-service/**
+  sensitive-headers: Cookie,Set-Cookie,Authorization #配置过滤敏感的请求头信息，设置为空就不会过滤
+  add-host-header: true #设置为true重定向是会添加host请求头
+  retryable: false # 关闭重试机制
 
 # 开启查看路由的端点
 management:
