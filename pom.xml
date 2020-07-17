@@ -28,6 +28,7 @@
         <module>spring-cloud-eureka-discovery</module>
         <module>spring-cloud-nacos-discovery</module>
         <module>spring-cloud-netflix-ribbon</module>
+        <module>spring-cloud-netflix-zuul</module>
     </modules>
 
     <developers>

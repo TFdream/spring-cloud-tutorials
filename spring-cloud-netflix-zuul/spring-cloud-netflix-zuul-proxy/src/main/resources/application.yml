@@ -1,0 +1,33 @@
+# 服务端口号
+server:
+  port: 8080
+
+# 服务名称
+spring:
+  application:
+    name: zuul-proxy
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true # 注册到 Eureka-Server，默认为 true
+    fetch-registry: true # 从 Eureka-Server 获取注册表，默认为 true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/ # Eureka-Server 地址
+
+#
+zuul:
+  prefix: /api-gateway #给网关路由添加前缀
+  routes: #给服务配置路由
+    user-service:
+      path: /user-service/**
+    product-service:
+      path: /product-service/**
+
+# 开启查看路由的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'routes'
