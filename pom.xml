@@ -29,6 +29,7 @@
         <module>spring-cloud-nacos-discovery</module>
         <module>spring-cloud-netflix-ribbon</module>
         <module>spring-cloud-netflix-zuul</module>
+        <module>spring-cloud-netflix-hystrix</module>
         <module>spring-cloud-gateway-demo</module>
     </modules>
 
