@@ -23,6 +23,7 @@
     <modules>
         <module>spring-cloud-netflix-hystrix-demo</module>
         <module>spring-cloud-netflix-hystrix-thread-local</module>
+        <module>spring-cloud-netflix-hystrix-dynamic-config</module>
     </modules>
 
     <dependencies>
