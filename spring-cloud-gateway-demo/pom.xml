@@ -46,6 +46,12 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>io.dreamstudio</groupId>
+            <artifactId>commons-module</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
         <!--使用Hystrix做服务降级时添加-->
         <!--
         <dependency>
