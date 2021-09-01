@@ -1,7 +1,8 @@
-package io.dreamstudio.springcloud.gateway.demo.filter;
+package io.dreamstudio.springcloud.gateway.demo.filter.global;
 
 import io.dreamstudio.springcloud.commons.Constants;
 import io.dreamstudio.springcloud.commons.util.StringUtils;
+import io.dreamstudio.springcloud.gateway.demo.filter.TracingContext;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.http.server.reactive.ServerHttpRequest;

@@ -1,6 +1,7 @@
 package io.dreamstudio.springcloud.gateway.demo.config;
 
 import io.dreamstudio.springcloud.gateway.demo.filter.RequestTimeGatewayFilterFactory;
+import io.dreamstudio.springcloud.gateway.demo.filter.global.TracingGlobalFilter;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +13,19 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class GatewayConfig {
 
+    /**
+     * GlobalFilter示例
+     * @return
+     */
+    @Bean
+    public TracingGlobalFilter tracingGlobalFilter() {
+        return new TracingGlobalFilter();
+    }
+
+    /**
+     * GatewayFilter示例
+     * @return
+     */
     @Bean
     public RequestTimeGatewayFilterFactory requestTimeGatewayFilterFactory() {
         return new RequestTimeGatewayFilterFactory();
