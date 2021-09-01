@@ -24,6 +24,7 @@
     </properties>
 
     <modules>
+        <module>commons-module</module>
         <module>spring-cloud-consul-discovery</module>
         <module>spring-cloud-eureka-discovery</module>
         <module>spring-cloud-nacos-discovery</module>
@@ -31,6 +32,7 @@
         <module>spring-cloud-netflix-zuul</module>
         <module>spring-cloud-netflix-hystrix</module>
         <module>spring-cloud-gateway-demo</module>
+        <module>spring-cloud-gateway-filter-demo</module>
     </modules>
 
     <developers>
