@@ -1,5 +1,6 @@
 package io.dreamstudio.springcloud.gateway.demo.config;
 
+import io.dreamstudio.springcloud.gateway.demo.filter.RequestTimeFilter;
 import io.dreamstudio.springcloud.gateway.demo.filter.RequestTimeGatewayFilterFactory;
 import io.dreamstudio.springcloud.gateway.demo.filter.global.TracingGlobalFilter;
 import org.springframework.cloud.gateway.route.RouteLocator;
@@ -35,6 +36,7 @@ public class GatewayConfig {
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route("path_route", r -> r.path("/user/getByUsername")
+                        .filters(f -> f.filter(new RequestTimeFilter()))
                         .uri("http://localhost:8080/user/getByUsername"))
                 .build();
     }
