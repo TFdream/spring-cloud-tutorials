@@ -1,0 +1,37 @@
+# 服务端口号
+server:
+  port: 8080
+
+# 服务名称
+spring:
+  application:
+    name: gateway-demo
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 100
+      minimumNumberOfCalls: 10
+      permittedNumberOfCallsInHalfOpenState: 10
+      waitDurationInOpenState: 10000
+      failureRateThreshold: 60
+      eventConsumerBufferSize: 10
+      registerHealthIndicator: true
+    someShared:
+      slidingWindowSize: 50
+      permittedNumberOfCallsInHalfOpenState: 10
+  instances:
+    backendA:
+      baseConfig: default
+      slidingWindowSize: 20
+      waitDurationInOpenState: 5000
+    backendB:
+      baseConfig: someShared
+
+  thread-pool-bulkhead:
+    configs:
+      default:
+        maxThreadPoolSize: 50
+        coreThreadPoolSize: 10
+        queueCapacity: 1
+
