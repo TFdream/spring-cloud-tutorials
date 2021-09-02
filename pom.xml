@@ -33,6 +33,7 @@
         <module>spring-cloud-netflix-hystrix</module>
         <module>spring-cloud-gateway-demo</module>
         <module>spring-cloud-gateway-filter-demo</module>
+        <module>spring-cloud-gateway-ratelimiter-demo</module>
     </modules>
 
     <developers>
