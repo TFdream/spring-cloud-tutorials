@@ -13,6 +13,15 @@ spring:
           enabled: true #开启从注册中心动态创建路由的功能
           lower-case-service-id: true #使用小写服务名，默认是大写
 
+      routes:
+        - id: header-rd
+          uri: http://localhost:8888/header
+          filters:
+            - AddRequestHeader=header, addHeader
+            - AddRequestParameter=param, addParam
+          predicates:
+            - Path=/hehe
+
 # eureka
 eureka:
   client:
