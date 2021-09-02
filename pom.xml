@@ -9,14 +9,14 @@
     <packaging>pom</packaging>
 
     <name>${project.artifactId}</name>
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/TFdream/spring-cloud-tutorials</url>
     <description>spring-cloud-tutorials</description>
 
     <properties>
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
         <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
         <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
-        <resilience4j.version>1.7.1</resilience4j.version>
+        <resilience4j.version>1.7.0</resilience4j.version>
         <guava.version>30.0-jre</guava.version>
         <gson.version>2.8.6</gson.version>
         <logback.version>1.2.3</logback.version>
@@ -29,10 +29,11 @@
         <module>commons-module</module>
         <module>spring-cloud-consul-discovery</module>
         <module>spring-cloud-eureka-discovery</module>
-        <module>spring-cloud-nacos-discovery</module>
+        <module>spring-cloud-nacos-discovery-demo</module>
         <module>spring-cloud-netflix-ribbon</module>
         <module>spring-cloud-netflix-zuul</module>
         <module>spring-cloud-netflix-hystrix</module>
+        <module>spring-cloud-gateway-resilience4j-demo</module>
         <module>spring-cloud-gateway-demo</module>
         <module>spring-cloud-gateway-filter-demo</module>
         <module>spring-cloud-gateway-ratelimiter-demo</module>

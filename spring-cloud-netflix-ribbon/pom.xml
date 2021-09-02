@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
 
     <name>${project.artifactId}</name>
-    <description>spring-cloud-consul-demo</description>
+    <description>${project.artifactId}</description>
 
     <properties>
         <java.version>1.8</java.version>
