@@ -37,6 +37,7 @@
         <module>spring-cloud-gateway-demo</module>
         <module>spring-cloud-gateway-filter-demo</module>
         <module>spring-cloud-gateway-ratelimiter-demo</module>
+        <module>spring-cloud-sleuth-demo</module>
     </modules>
 
     <developers>
@@ -53,7 +54,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <dependency>
