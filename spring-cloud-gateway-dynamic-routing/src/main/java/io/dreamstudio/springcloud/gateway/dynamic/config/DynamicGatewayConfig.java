@@ -1,7 +1,6 @@
-package io.dreamstudio.springcloud.gateway.demo.config;
+package io.dreamstudio.springcloud.gateway.dynamic.config;
 
-import io.dreamstudio.springcloud.gateway.demo.dynamic.DynamicRouteDefinitionLocator;
-import io.dreamstudio.springcloud.gateway.demo.dynamic.GatewayRoutesRefresher;
+import io.dreamstudio.springcloud.gateway.dynamic.route.DynamicRouteDefinitionLocator;
 import org.springframework.cloud.gateway.route.RouteDefinitionRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,11 +17,6 @@ public class DynamicGatewayConfig {
     @Bean
     public RouteDefinitionRepository dynamicRouteDefinitionLocator() {
         return new DynamicRouteDefinitionLocator();
-    }
-
-    @Bean
-    public GatewayRoutesRefresher routesRefresher() {
-        return new GatewayRoutesRefresher();
     }
 
 }

@@ -37,6 +37,7 @@
         <module>spring-cloud-gateway-demo</module>
         <module>spring-cloud-gateway-filter-demo</module>
         <module>spring-cloud-gateway-ratelimiter-demo</module>
+        <module>spring-cloud-gateway-dynamic-routing</module>
         <module>spring-cloud-sleuth-demo</module>
     </modules>
 

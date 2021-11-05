@@ -1,17 +1,20 @@
-package io.dreamstudio.springcloud.gateway.demo.dynamic;
+package io.dreamstudio.springcloud.gateway.dynamic.route;
 
 import io.dreamstudio.springcloud.commons.util.JsonUtils;
+import io.dreamstudio.springcloud.gateway.dynamic.entity.DynamicRouteDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cloud.gateway.event.RefreshRoutesEvent;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionRepository;
 import org.springframework.cloud.gateway.support.NotFoundException;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import javax.annotation.Resource;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
@@ -20,18 +23,24 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
+ * 参考 actuate模块中的 AbstractGatewayControllerEndpoint
  * 对比 InMemoryRouteDefinitionRepository
  * @author Ricky Fung
  */
-public class DynamicRouteDefinitionLocator implements RouteDefinitionRepository {
+public class DynamicRouteDefinitionLocator implements RouteDefinitionRepository, ApplicationEventPublisherAware {
+    
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
     private final Map<String, RouteDefinition> routesMap = new ConcurrentHashMap<>();
     private final CopyOnWriteArrayList<RouteDefinition> routesList = new CopyOnWriteArrayList<>();
-
-    @Resource
-    private GatewayRoutesRefresher gatewayRoutesRefresher;
-
+    
+    private ApplicationEventPublisher publisher;
+    
+    @Override
+    public void setApplicationEventPublisher(ApplicationEventPublisher publisher) {
+        this.publisher = publisher;
+    }
+    
     @Override
     public Flux<RouteDefinition> getRouteDefinitions() {
         return Flux.fromIterable(routesMap.values());
@@ -64,7 +73,7 @@ public class DynamicRouteDefinitionLocator implements RouteDefinitionRepository 
     public List<RouteDefinition> initRoutList(boolean init) {
         LOG.info("gateway动态路由加载开始, init={}", init);
         try {
-            List<DynamicRouteDefinition> list = getRouteList();
+            List<DynamicRouteDefinition> list = loadRoutingDefinitions();
             if (CollectionUtils.isEmpty(list)) {
                 LOG.info("gateway动态路由加载, 路由列表为空");
                 routesMap.clear();
@@ -101,12 +110,21 @@ public class DynamicRouteDefinitionLocator implements RouteDefinitionRepository 
         } catch (Exception ex) {
             LOG.error("发生路由变更事件,本地路由刷新执行异常 routeRefreshFlag={} curRouteRefreshFlag={} ", ex);
         } finally {
-            gatewayRoutesRefresher.refreshRoutes();
+            refreshRoutes();
         }
         return null;
     }
-
-    protected List<DynamicRouteDefinition> getRouteList() {
+    
+    /**
+     * 发送路由刷新通知事件
+     * gateway模块中CachingRouteLocator 负责处理该事件
+     */
+    protected void refreshRoutes() {
+        publisher.publishEvent(new RefreshRoutesEvent(this));
+    }
+    
+    protected List<DynamicRouteDefinition> loadRoutingDefinitions() {
         return null;
     }
+    
 }

@@ -23,13 +23,10 @@ public class EchoController {
 
     @GetMapping("/appInfo")
     public String appInfo(String name) {
-        Map<String, String> map = aim.getInfo().getMetadata();
+        InstanceInfo instanceInfo = aim.getInfo();
+        Map<String, String> map = instanceInfo.getMetadata();
         map.put("dynamic-s1", "value_2");
         return "provider:" + name;
     }
 
-    @GetMapping("/appInfo")
-    public InstanceInfo get() {
-        return aim.getInfo();
-    }
 }

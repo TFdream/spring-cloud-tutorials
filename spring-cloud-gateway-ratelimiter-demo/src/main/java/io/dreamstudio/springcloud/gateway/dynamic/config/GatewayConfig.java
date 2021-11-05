@@ -1,4 +1,4 @@
-package io.dreamstudio.springcloud.gateway.demo.config;
+package io.dreamstudio.springcloud.gateway.dynamic.config;
 
 import io.dreamstudio.springcloud.gateway.demo.filter.LocalRateLimiterGatewayFilterFactory;
 import org.springframework.cloud.gateway.route.RouteLocator;

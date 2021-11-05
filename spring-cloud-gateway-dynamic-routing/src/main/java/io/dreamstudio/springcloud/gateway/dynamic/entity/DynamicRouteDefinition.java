@@ -1,4 +1,4 @@
-package io.dreamstudio.springcloud.gateway.demo.dynamic;
+package io.dreamstudio.springcloud.gateway.dynamic.entity;
 
 import org.springframework.cloud.gateway.filter.FilterDefinition;
 import org.springframework.cloud.gateway.handler.predicate.PredicateDefinition;
